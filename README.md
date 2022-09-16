@@ -39,3 +39,18 @@ set_var EASYRSA_DIGEST "sha512"
 ~./easy-rsa/ ./easyrsa build-ca
 ## password : ubadmin
 ## name : ubserver
+CA certificate file for publishing is at /home/ubadmin/easy-rsa/pki/ca.crt
+ca.crt is the CA’s public certificate file. Users, servers, and clients will use this certificate to verify that they
+are part of the same web of trust. Every user and server that uses your CA will need to have a copy of this
+file. All parties will rely on the public certificate to ensure that someone is not impersonating a system and
+performing a Man-in-the-middle attack.
+ca.key is the private key that the CA uses to sign certificates for servers and clients. If an attacker gains
+access to your CA and, in turn, your ca.key file, you will need to destroy your CA. This is why your ca.key
+file should only be on your CA machine and that, ideally, your CA machine should be kept offline when not
+signing certificate requests as an extra security measure
+
+## Generating a CSR
+CSR // Certificate Signing Request
+
+openSSL CSR wizard
+https://www.digicert.com/easy-csr/openssl.htm
