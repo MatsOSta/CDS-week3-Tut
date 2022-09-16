@@ -76,5 +76,8 @@ client // for clients
 /home/ubadmin/easy-rsa/pki/issued/ubserver.crt
 /home/ubadmin/easy-rsa/pki/issued/MatSta.crt
 /home/ubadmin/easy-rsa/pki/issued/recovery.crt
-#Might need to be copied back to where the key was generated and linked to server configuration??
+# Might need to be copied back to where the key was generated and linked to server configuration??
+# END 1
+
+## Apache TLS
 
