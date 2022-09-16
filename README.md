@@ -54,3 +54,9 @@ CSR // Certificate Signing Request
 
 openSSL CSR wizard
 https://www.digicert.com/easy-csr/openssl.htm
+CN // Common Name
+~/easy-rsa/certs/apache_webserver // CN == blog.com
+~/easy-rsa/certs/MatSta66614@stud.noroff.no // CN == MatSta66614@stud.noroff.no
+~/easy-rsa/certs/mysqlDBserver // CN == ubserver
+~/easy-rsa/certs/recovery@ubserver // CN == recovery
+
