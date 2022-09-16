@@ -52,11 +52,29 @@ signing certificate requests as an extra security measure
 ## Generating a CSR
 CSR // Certificate Signing Request
 
-openSSL CSR wizard
+mkdir to create directory and sperate paths
+use openSSL CSR wizard to create cli syntax
 https://www.digicert.com/easy-csr/openssl.htm
+
+import name into CA system
+~/easy-rsa$ ./easyrsa import-req ../webserver.csr webserver
+
 CN // Common Name
-~/easy-rsa/certs/apache_webserver // CN == blog.com
-~/easy-rsa/certs/MatSta66614@stud.noroff.no // CN == MatSta66614@stud.noroff.no
-~/easy-rsa/certs/mysqlDBserver // CN == ubserver
-~/easy-rsa/certs/recovery@ubserver // CN == recovery
+SN // Short Name
+~/easy-rsa/certs/apache_webserver // CN == blog.com SN == blog.com
+~/easy-rsa/certs/MatSta66614@stud.noroff.no // CN == MatSta66614@stud.noroff.no SN == MatSta
+~/easy-rsa/certs/mysqlDBserver // CN == ubserver SN == ubserver
+~/easy-rsa/certs/recovery@ubserver // CN == recovery SN == recovery
+
+CSR imported now sign
+server // for servers
+client // for clients
+
+~/easy-rsa$ ./easyrsa sign-req server webserver
+
+/home/ubadmin/easy-rsa/pki/issued/blog.com.crt
+/home/ubadmin/easy-rsa/pki/issued/ubserver.crt
+/home/ubadmin/easy-rsa/pki/issued/MatSta.crt
+/home/ubadmin/easy-rsa/pki/issued/recovery.crt
+#Might need to be copied back to where the key was generated and linked to server configuration??
 
