@@ -91,3 +91,6 @@ sudo sslscan noroff.no:443 > www.txt
 grep or diff it.
 grep -Fxnvf www.n.txt www.txt
 diff www.n.txt www.txt
+
+useful site for suites
+https://ssl-config.mozilla.org/#server=apache&version=2.4.52&config=modern&openssl=3.0.2&guideline=5.6
