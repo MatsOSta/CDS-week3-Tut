@@ -155,3 +155,50 @@ https://ssl-config.mozilla.org/#server=apache&version=2.4.52&config=modern&opens
 sslscan 192.168.229.131:443
 sudo nano /etc/apache2/mods-available/ssl.conf
 
+Moodle
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+komplett
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   enabled
+TLSv1.1   enabled
+TLSv1.2   enabled
+TLSv1.3   disabled
+vg
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   enabled
+TLSv1.1   enabled
+TLSv1.2   enabled
+TLSv1.3   enabled
+stortinget
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   disabled
+TLSv1.1   disabled
+TLSv1.2   enabled
+TLSv1.3   disabled
+
+hidden ciphers
+
+## HTTP Headers
+to mask headers add
+ServerTokens Full
+ServerSignature Off
+to site.conf
+
+1. What would the advantage be of using a certificate form a known CA rather than the
+self-signed one we have used in the tutorial.
+Authentication
+2. What does a certificate attest to about a server?
+Server integrity
+4. On what basis do we know to trust a server?
+it has to be traceable back to the trust root it was signed off of
+6. How could a server trust a client ?
+by receiving the client's certificate during the SSL handshake
+
