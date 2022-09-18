@@ -200,5 +200,12 @@ Server integrity
 4. On what basis do we know to trust a server?
 it has to be traceable back to the trust root it was signed off of
 6. How could a server trust a client ?
+
+#!/usr/bin/bash
+name=$1
+echo "tlscheck for $name"
+echo 'Written by MatSta66614@stud.noroff.no'
+sslscan --no-check-certificate --no-ciphersuites --no-fallback --no-renegotiation --no-compression --no-heartbleed --no-check-certificate --no-sigs --no-heartbleed --no-groups $1 | tail -7 | sed '$d'
+
 by receiving the client's certificate during the SSL handshake
 
