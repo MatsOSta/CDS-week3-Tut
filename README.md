@@ -91,6 +91,67 @@ sudo sslscan noroff.no:443 > www.txt
 grep or diff it.
 grep -Fxnvf www.n.txt www.txt
 diff www.n.txt www.txt
+4c4
+< Connected to 52.212.52.84
+---
+> Connected to 194.63.248.52
+6c6
+< Testing SSL server www.noroff.no on port 443 using SNI name www.noroff.no
+---
+> Testing SSL server noroff.no on port 443 using SNI name noroff.no
+31,32c31
+< Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+< Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+---
+> Preferred TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384        Curve 25519 DHE 253
+34,38c33,43
+< Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+< Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+< Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305   Curve 25519 DHE 253
+< Accepted  TLSv1.2  128 bits  AES128-GCM-SHA256            
+< Accepted  TLSv1.2  256 bits  AES256-GCM-SHA384            
+---
+> Accepted  TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256        Curve 25519 DHE 253
+> Preferred TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve 25519 DHE 253
+> Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve 25519 DHE 253
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+> Accepted  TLSv1.2  128 bits  DHE-RSA-AES128-GCM-SHA256     DHE 2048 bits
+> Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA384       Curve 25519 DHE 253
+> Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA          Curve 25519 DHE 253
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-CCM8           DHE 2048 bits
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-CCM            DHE 2048 bits
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-SHA256         DHE 2048 bits
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-SHA            DHE 2048 bits
+41a47,48
+> TLSv1.3  192 bits  secp384r1 (NIST P-384)
+> TLSv1.3  260 bits  secp521r1 (NIST P-521)
+42a50
+> TLSv1.3  224 bits  x448
+43a52,53
+> TLSv1.2  192 bits  secp384r1 (NIST P-384)
+> TLSv1.2  260 bits  secp521r1 (NIST P-521)
+44a55
+> TLSv1.2  224 bits  x448
+50,52c61,63
+< Subject:  *.noroff.no
+< Altnames: DNS:*.noroff.no, DNS:noroff.no
+< Issuer:   DigiCert TLS RSA SHA256 2020 CA1
+---
+> Subject:  noroff.no
+> Altnames: DNS:noroff.no
+> Issuer:   R3
+54,55c65,66
+< Not valid before: Sep 27 00:00:00 2021 GMT
+< Not valid after:  Oct 27 23:59:59 2022 GMT
+---
+> Not valid before: Aug 24 21:42:28 2022 GMT
+> Not valid after:  Nov 22 21:42:27 2022 GMT
+
+
+
 
 useful site for suites
 https://ssl-config.mozilla.org/#server=apache&version=2.4.52&config=modern&openssl=3.0.2&guideline=5.6
+sslscan 192.168.229.131:443
+sudo nano /etc/apache2/mods-available/ssl.conf
+
