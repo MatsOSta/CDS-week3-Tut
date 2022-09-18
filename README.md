@@ -1,13 +1,13 @@
 # CDS-week3-Tut
 
-#Setting up your own CA
+# Setting up your own CA
 CA // CERTIFICATE AUTHORITY 
 TLS certificates often SSL certificates by accident are avaliable for free or for a fee
 
 sudo apt install easy-rsa
 Using EASY rsa as a CA
 https://easy-rsa.readthedocs.io/en/latest/#using-easy-rsa-as-a-ca
-#Install and symlink
+# Install and symlink
 ==
 mkdir ~/easy-rsa
 using ln to symlink updates
@@ -25,7 +25,7 @@ init-pki complete; you may now create a CA or requests.
 Your newly created PKI dir is: /home/ubadmin/easy-rsa/pki
 //
 
-#CA building
+# CA building
 create and fill vars file
 set_var EASYRSA_REQ_COUNTRY "NO"
 set_var EASYRSA_REQ_PROVINCE "Agder"
@@ -82,8 +82,8 @@ client // for clients
 ## Apache TLS
 See tut
 
-##TLS tuning
-#See differences between two ciphersuites
+## TLS tuning
+# See differences between two ciphersuites
 write sslscan output to file
 sudo sslscan www.noroff.no:443 > www.n.txt
 sudo sslscan noroff.no:443 > www.txt
