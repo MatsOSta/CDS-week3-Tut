@@ -82,3 +82,12 @@ client // for clients
 ## Apache TLS
 See tut
 
+##TLS tuning
+#See differences between two ciphersuites
+write sslscan output to file
+sudo sslscan www.noroff.no:443 > www.n.txt
+sudo sslscan noroff.no:443 > www.txt
+
+grep or diff it.
+grep -Fxnvf www.n.txt www.txt
+diff www.n.txt www.txt
