@@ -207,5 +207,170 @@ echo "tlscheck for $name"
 echo 'Written by MatSta66614@stud.noroff.no'
 sslscan --no-check-certificate --no-ciphersuites --no-fallback --no-renegotiation --no-compression --no-heartbleed --no-check-certificate --no-sigs --no-heartbleed --no-groups $1 | tail -7 | sed '$d'
 
+# Cipher suites and sec headers
+# Noroff
+sslscan --no-cipher-details --no-compression --no-fallback --no-groups --no-heartbleed --no-renegotiation --no-check-certificate  www.noroff.no > temp.log
+sslscan --no-cipher-details --no-compression --no-fallback --no-groups --no-heartbleed --no-renegotiation --no-check-certificate  noroff.no > temp1.log
+diff temp.log temp1.log
+4c4
+< Connected to 52.212.52.84
+---
+> Connected to 194.63.248.52
+6c6
+< Testing SSL server www.noroff.no on port 443 using SNI name www.noroff.no
+---
+> Testing SSL server noroff.no on port 443 using SNI name noroff.no
+17,18c17
+< Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256       
+< Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384       
+---
+> Preferred TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384       
+20,24c19,29
+< Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256  
+< Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384  
+< Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305  
+< Accepted  TLSv1.2  128 bits  AES128-GCM-SHA256            
+< Accepted  TLSv1.2  256 bits  AES256-GCM-SHA384            
+---
+> Accepted  TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256       
+> Preferred TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384  
+> Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256  
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384    
+> Accepted  TLSv1.2  128 bits  DHE-RSA-AES128-GCM-SHA256    
+> Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA384      
+> Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA         
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-CCM8          
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-CCM           
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-SHA256        
+> Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-SHA
+
 by receiving the client's certificate during the SSL handshake
+
+< Server: openresty
+< Date: Mon, 19 Sep 2022 06:54:05 GMT
+< Content-Type: text/html
+5a3,8
+> Date: Mon, 19 Sep 2022 06:54:25 GMT
+> Server: Apache
+> Expires: Wed, 17 Aug 2005 00:00:00 GMT
+> Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+> Pragma: no-cache
+> Set-Cookie: e59907035f96c67461507ecc5338ab31=if25oonc770lo5aiuhqsshk97vd5rcf6; path=/; secure; HttpOnly                                                                                                       
+7,9c10,13
+< Expires: Mon, 19 Sep 2022 07:54:05 GMT
+< Cache-Control: max-age=3600
+< Cache-Control: public
+---
+> Last-Modified: Mon, 19 Sep 2022 06:54:25 GMT
+> Vary: User-Agent
+> Content-Type: text/html; charset=utf-8
+> Via: 1.1 vegur
+
+
+# moodle
+Preferred TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256       
+Accepted  TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384       
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256 
+Preferred TLSv1.2  256 bits  ECDHE-ECDSA-CHACHA20-POLY1305
+Accepted  TLSv1.2  128 bits  ECDHE-ECDSA-AES128-GCM-SHA256
+Accepted  TLSv1.2  128 bits  ECDHE-ECDSA-AES128-SHA       
+Accepted  TLSv1.2  256 bits  ECDHE-ECDSA-AES256-GCM-SHA384
+Accepted  TLSv1.2  256 bits  ECDHE-ECDSA-AES256-SHA       
+Accepted  TLSv1.2  128 bits  ECDHE-ECDSA-AES128-SHA256    
+Accepted  TLSv1.2  256 bits  ECDHE-ECDSA-AES256-SHA384    
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305  
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256  
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA         
+Accepted  TLSv1.2  128 bits  AES128-GCM-SHA256            
+Accepted  TLSv1.2  128 bits  AES128-SHA                   
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384  
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA         
+Accepted  TLSv1.2  256 bits  AES256-GCM-SHA384            
+Accepted  TLSv1.2  256 bits  AES256-SHA                   
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA256      
+Accepted  TLSv1.2  128 bits  AES128-SHA256                
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA384      
+Accepted  TLSv1.2  256 bits  AES256-SHA256
+
+HTTP/1.1 301 Moved Permanently
+Date: Mon, 19 Sep 2022 06:53:13 GMT
+Content-Type: text/html
+Content-Length: 162
+Connection: keep-alive
+Location: https://moodle.com/
+CF-Cache-Status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=etwB7gZn6Iebmn%2BfK16gFrG99WiJBrJBUTb36QiifaFhJhmTEY1yCah51vAhXoecY3IBKEu7Y19cTnmTdgGirP5yTRnsGfPKiHLnLbO%2FusLQSOGHrDzKaG9aBFE%3D"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 74d0672bc9c8fabc-OSL
+alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+
+# komplett
+Preferred TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384  
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256  
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA384      
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA256      
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA         
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA         
+Accepted  TLSv1.2  256 bits  AES256-GCM-SHA384            
+Accepted  TLSv1.2  128 bits  AES128-GCM-SHA256            
+Accepted  TLSv1.2  256 bits  AES256-SHA256                
+Accepted  TLSv1.2  128 bits  AES128-SHA256                
+Accepted  TLSv1.2  256 bits  AES256-SHA                   
+Accepted  TLSv1.2  128 bits  AES128-SHA 
+
+HTTP/1.1 301 Moved Permanently
+Server: AkamaiGHost
+Content-Length: 0
+Location: https://komplett.no/
+Cache-Control: max-age=0
+Expires: Mon, 19 Sep 2022 06:50:44 GMT
+Date: Mon, 19 Sep 2022 06:50:44 GMT
+Connection: keep-alive
+Strict-Transport-Security: max-age=15552000
+X-Frame-Options: SAMEORIGIN
+
+
+
+# vg.no
+Preferred TLSv1.3  256 bits  TLS_AES_256_GCM_SHA384       
+Accepted  TLSv1.3  256 bits  TLS_CHACHA20_POLY1305_SHA256 
+Accepted  TLSv1.3  128 bits  TLS_AES_128_GCM_SHA256       
+Preferred TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256  
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384  
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-CHACHA20-POLY1305  
+Accepted  TLSv1.2  128 bits  DHE-RSA-AES128-GCM-SHA256    
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA256      
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA384      
+Accepted  TLSv1.2  128 bits  DHE-RSA-AES128-SHA256        
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-SHA256        
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA         
+Accepted  TLSv1.2  128 bits  DHE-RSA-AES128-SHA           
+Accepted  TLSv1.2  128 bits  AES128-GCM-SHA256            
+Accepted  TLSv1.2  256 bits  AES256-GCM-SHA384            
+Accepted  TLSv1.2  128 bits  AES128-SHA256                
+Accepted  TLSv1.2  256 bits  AES256-SHA256                
+Preferred TLSv1.1  128 bits  ECDHE-RSA-AES128-SHA         
+Accepted  TLSv1.1  128 bits  DHE-RSA-AES128-SHA           
+Preferred TLSv1.0  128 bits  ECDHE-RSA-AES128-SHA         
+Accepted  TLSv1.0  128 bits  DHE-RSA-AES128-SHA 
+
+HTTP/1.1 301 Moved
+Date: Mon, 19 Sep 2022 06:52:27 GMT
+Server: Varnish
+X-Varnish: 770314385
+location: https://www.vg.no/
+Content-Length: 0
+Connection: keep-alive
+
+# Stortinget.no
+Preferred TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384  
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA384      
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256 
+
+HTTP/1.0 302 Found
+Location: https://stortinget.no/
+Server: BigIP
+Connection: Keep-Alive
+Content-Length: 0
 
